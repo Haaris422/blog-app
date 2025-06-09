@@ -1,46 +1,18 @@
 'use client';
 
 import { Button } from "@/components/Shared/Button"
-import { NavItems } from "../TS/Types"
+import { NavItems } from "../Constants/Types"
 import { NavLink } from "./NavLink"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import HamburgerButton from "./Hamburger"
-import { useEffect, useRef, useState } from "react"
+import { useRef, useState } from "react"
+import { Dropdown } from "./Dropdown";
+import { bottomNavs } from "../Constants/Data";
 
 export function BottomNav() {
     const [openMenu, setOpenMenu] = useState(false);
     const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-    const arrowRef = useRef<HTMLDivElement>(null);
-    const menuRef = useRef<HTMLDivElement>(null);
 
-    const bottomNavs: NavItems[] = [
-        { label: 'Categories', name: 'categories' },
-        { label: 'Blogs', name: 'blogs' },
-        { label: 'Research', name: 'research' },
-        { label: 'Thoughts', name: 'thaughts' },
-        { label: 'Videos', name: 'videos' },
-    ]
-    const categories: NavItems[] = [
-        { label: 'Family Law', name: 'family-law' },
-        { label: 'Criminal Law', name: 'criminal-law' },
-        { label: 'Constitutional Law', name: 'constitutional-law' },
-        { label: 'Corporate Law', name: 'corporate-law' },
-        { label: 'Contract Law', name: 'contract-law' },
-        { label: 'Labour Law', name: 'labour-law' },
-        { label: 'Intellectual Property Law', name: 'ip-law' },
-        { label: 'Property Law', name: 'property-law' },
-        { label: 'Taxation Law', name: 'tax-law' },
-        { label: 'Environmental Law', name: 'environmental-law' },
-        { label: 'Consumer Law', name: 'consumer-law' },
-        { label: 'Cyber Law', name: 'cyber-law' },
-    ];
-
-    const blogs:NavItems[] =[
-        { label:'Featured', name:'featured-blogs' },
-        { label:'Spotlight', name:'spotlight-blogs' },
-        { label:'Latest', name:'latest-blogs' },
-        { label:'All', name:'all-blogs' },
-    ]
     const toggleDropdown = (name: string) => {
         setOpenDropdown(prev => (prev === name ? null : name));
     };
@@ -75,37 +47,33 @@ export function BottomNav() {
                     bottomNavLinksGeneraor(navItem)
                 ))}
             </div>
-            <div className="block md:hidden absolute top-8.5 right-5">
+            <div className={`block md:hidden absolute top-8.5 z-10 right-5 
+                ${openMenu ? 'text-white' : 'text-black'}`}>
                 <HamburgerButton open={openMenu} onClick={() => setOpenMenu(!openMenu)} />
             </div>
             <div
-                className={`hidden text-center md:grid grid-cols-4
-                    gap-8 font-typewriter transition-all duration-500 ease-in-out overflow-hidden 
-                    ${openDropdown === 'categories'  ?
-                        "max-h-screen bg-black/80 px-24 backdrop-blur-2xl py-10 "
-                        :
-                        "max-h-0 p-0 opacity-0"
-                    }`}>
-                {categories.map((category) => (
-                    <NavLink underline={false} className="text-red-800!" key={category.name} navItem={category}>
-                        {category.label}
-                    </NavLink>
-                ))}
+                className={`fixed top-0 w-full flex justify-between items-center h-[100vh] bg-black/90 backdrop-blur-md ${openMenu ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="w-full">
+
+                </div>
+                <div className="w-[2px] h-[100vh]  bg-white" />
+                <div className="flex flex-col py-2 space-y-8">
+                    {bottomNavs.map((navItem) => (
+                        <Button onClick={() => setOpenDropdown(navItem.name)}
+                            className={`transition-all duration-500 ease-in-out 
+                            ${openDropdown === navItem.name ?
+                                    'bg-white text-black'
+                                    :
+                                    'bg-transparent'
+                                }`
+                            } key={navItem.label}>{navItem.name}</Button>
+                    ))}
+                </div>
             </div>
-            <div
-                className={`hidden text-center md:grid grid-cols-4
-                    gap-8 font-typewriter transition-all duration-500 ease-in-out overflow-hidden 
-                    ${openDropdown === 'blogs'  ?
-                        "max-h-screen bg-black/80 px-24 backdrop-blur-2xl py-10 "
-                        :
-                        "max-h-0 p-0 opacity-0"
-                    }`}>
-                {categories.map((category) => (
-                    <NavLink underline={false} className="text-white!" key={category.name} navItem={category}>
-                        {category.label}
-                    </NavLink>
-                ))}
-            </div>
+            {<Dropdown
+                openDropdown={openDropdown}
+            />}
+
         </div>
     )
 }

@@ -1,10 +1,6 @@
-'use client';
-import Link from "next/link"
-import HamburgerButton from "./Hamburger"
-import { useEffect, useRef, useState } from "react"
 import { BiSearch } from "react-icons/bi";
 import { Button } from "@/components/Shared/Button";
-import { NavItems } from "../TS/Types";
+import { NavItems } from "../Constants/Types";
 import { NavLink } from "./NavLink";
 
 

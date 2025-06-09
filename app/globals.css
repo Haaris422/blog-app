@@ -57,10 +57,13 @@ body {
 .menu-btn-1.active span::before {
   margin-top: 0;
   transform: rotate(45deg);
+  background-color: white;
 }
 
 .menu-btn-1.active span::after {
   margin-top: 0;
   transform: rotate(-45deg);
+    background-color: white;
+
 }
 

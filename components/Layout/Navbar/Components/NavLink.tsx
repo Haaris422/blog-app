@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { NavLinkProps } from "../TS/Types";
+import { NavLinkProps } from "../Constants/Types";
 
 
 
