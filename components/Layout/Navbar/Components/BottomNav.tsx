@@ -5,9 +5,10 @@ import { NavItems } from "../Constants/Types"
 import { NavLink } from "./NavLink"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import HamburgerButton from "./Hamburger"
-import { useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Dropdown } from "./Dropdown";
 import { bottomNavs } from "../Constants/Data";
+import { SideNav } from "./SideNav";
 
 export function BottomNav() {
     const [openMenu, setOpenMenu] = useState(false);
@@ -37,6 +38,13 @@ export function BottomNav() {
         }
     }
 
+    const [mounted, setMounted] = useState(false);
+
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+
+    if (!mounted) return null;
 
     return (
         <div>
@@ -51,28 +59,10 @@ export function BottomNav() {
                 ${openMenu ? 'text-white' : 'text-black'}`}>
                 <HamburgerButton open={openMenu} onClick={() => setOpenMenu(!openMenu)} />
             </div>
-            <div
-                className={`fixed top-0 w-full flex justify-between items-center h-[100vh] bg-black/90 backdrop-blur-md ${openMenu ? 'opacity-100' : 'opacity-0'}`}>
-                <div className="w-full">
-
-                </div>
-                <div className="w-[2px] h-[100vh]  bg-white" />
-                <div className="flex flex-col py-2 space-y-8">
-                    {bottomNavs.map((navItem) => (
-                        <Button onClick={() => setOpenDropdown(navItem.name)}
-                            className={`transition-all duration-500 ease-in-out 
-                            ${openDropdown === navItem.name ?
-                                    'bg-white text-black'
-                                    :
-                                    'bg-transparent'
-                                }`
-                            } key={navItem.label}>{navItem.name}</Button>
-                    ))}
-                </div>
-            </div>
-            {<Dropdown
+            <SideNav openMenu={openMenu} setOpenDropdown={setOpenDropdown} openDropdown={openDropdown} />
+            <Dropdown
                 openDropdown={openDropdown}
-            />}
+            />
 
         </div>
     )
