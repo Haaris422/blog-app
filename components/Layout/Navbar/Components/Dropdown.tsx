@@ -84,12 +84,22 @@ export function Dropdown({ openDropdown }: DropdownProps) {
     </div>
   );
 
+  // const renderResearchItem = (item: NavContentsProps, index: number) =>(
+  //   <div
+  //     key={item.name}
+  //     className="group w-full relative bg-black/80 animate-fade-in-up"
+  //     style={{ animationDelay: `${index * 100}ms` }}
+  //   >
+
+  //   </div>
+  // )
+
   const getDropdownContent = (tab: string | null) => {
     if (!tab) return null;
-
+    
     const isCategories = tab === "categories";
     const data = isCategories ? categories : blogsAndResearch;
-    const title = isCategories ? "Explore Categories" : "Latest Insights";
+    const title = isCategories ? "Explore Categories" : (tab === 'blogs') ? "Latest Insights" : "Latest Research Reports";
     const renderItem = isCategories ? renderCategoryItem : renderBlogItem;
 
     return (

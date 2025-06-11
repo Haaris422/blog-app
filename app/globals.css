@@ -55,26 +55,30 @@
 
 }
 
-/* Global Scrollbar Styling */
+
 * {
-  scrollbar-width: thin;             /* Firefox */
-  scrollbar-color: #888 #1a1a1a;     /* Firefox: thumb and track colors */
+  scrollbar-width: thin;            
+  scrollbar-color: #888 #1a1a1a;  
 }
 
-/* WebKit browsers (Chrome, Edge, Safari) */
+.body {
+  background-color: white;
+}
+
+
 *::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 *::-webkit-scrollbar-track {
-  background: #1a1a1a;               /* Track color */
+  background: #1a1a1a;               
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #888;           /* Scrollbar handle color */
+  background-color: #888;           
   border-radius: 10px;
-  border: 2px solid #1a1a1a;        /* Padding around thumb */
+  border: 2px solid #1a1a1a;        
 }
 
 *::-webkit-scrollbar-thumb:hover {

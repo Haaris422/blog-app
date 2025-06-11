@@ -4,7 +4,7 @@ import { NavContentsProps, NavItems } from "./Types";
         { label: 'Categories', name: 'categories' },
         { label: 'Blogs', name: 'blogs' },
         { label: 'Research', name: 'research' },
-        { label: 'Thoughts', name: 'thaughts' },
+        { label: 'Thoughts', name: 'thoughts' },
         { label: 'Videos', name: 'videos' },
     ]
   export const categories: NavContentsProps[] = [

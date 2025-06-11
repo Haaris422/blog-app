@@ -79,7 +79,7 @@ export function SideNavArea({ openDropdown }: SideNavAreaProps) {
 
         const isCategories = tab === "categories";
         const data = isCategories ? categories : blogsAndResearch;
-        const title = isCategories ? "Explore Categories" : "Explore Blogs";
+        const title = isCategories ? "Explore Categories" : tab === 'blogs' ? "Explore Blogs" : "Explore Articles";
 
         return (
             <div>

@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-      className={`${girassol.variable} ${typewriter.variable} antialiased`}
+      className={`relative ${girassol.variable} ${typewriter.variable} antialiased`}
       >
         <Navbar/>
         {children}

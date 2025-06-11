@@ -1,5 +1,4 @@
 import { TopNav } from "@/components/Layout/Navbar/Components/TopNav"
-import Link from "next/link"
 import { BottomNav } from "./Components/BottomNav"
 
 export function Navbar(){
