@@ -3,6 +3,7 @@ import { bottomNavs, categories } from "../Constants/Data";
 import { SideNavArea } from "./SideNavArea";
 import { NavLink } from "./NavLink";
 import Link from "next/link";
+import { animationCalss } from "@/components/Home/Constants/Data";
 
 interface SideNavProps {
     openDropdown: string | null;
@@ -27,11 +28,11 @@ export function SideNav({ openDropdown, setOpenDropdown, openMenu }: SideNavProp
             <div className="w-[2px] h-screen bg-white" />
             <div className="flex flex-col py-2 space-y-8">
                 {bottomNavs.map((navItem) => {
-                    if (navItem.name === 'thoughts' || navItem.name === 'videos') {
+                    if (navItem.name === 'insights' || navItem.name === 'videos') {
                         return (
                             <Button
                                 onClick={() => setOpenDropdown(navItem.name)}
-                                className={`transition-all duration-500 ease-in-out ${openDropdown === navItem.name
+                                className={`${animationCalss} ${openDropdown === navItem.name
                                     ? 'bg-white text-black'
                                     : 'bg-transparent'
                                     }`}
@@ -46,7 +47,7 @@ export function SideNav({ openDropdown, setOpenDropdown, openMenu }: SideNavProp
                     return (
                         <Button
                             onClick={() => setOpenDropdown(navItem.name)}
-                            className={`transition-all duration-500 ease-in-out ${openDropdown === navItem.name
+                            className={`${animationCalss} ${openDropdown === navItem.name
                                 ? 'bg-white text-black'
                                 : 'bg-transparent'
                                 }`}

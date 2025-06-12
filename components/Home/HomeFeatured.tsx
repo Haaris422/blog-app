@@ -1,13 +1,13 @@
 import { Button } from "../Shared/Button";
 import { MdOutlineKeyboardDoubleArrowRight } from "react-icons/md";
 import Link from "next/link";
-import { shareSocials } from "./Constants/Data";
+import { animationCalss, shareSocials } from "./Constants/Data";
+import { AuthorInfo } from "./Shared/AuthorInfo";
 
 
 
 export function HomeFeatured() {
 
-    const animationCalss = 'transition-all duration-500 ease-in-out'
     return (
         <div className="">
             <h1 className="text-black text-4xl font-bold mb-6">
@@ -39,7 +39,10 @@ export function HomeFeatured() {
                                     ))}
                                 </div>
                             </div>
-                            <div className={`h-16 italic bg-black/70 flex p-1 items-center 
+                            <div className="p-1 text-white bg-black/70">
+                                <AuthorInfo />
+                            </div>
+                            {/* <div className={`h-16 italic bg-black/70 flex p-1 items-center 
                             justify-between group/author`}>
                                 <div className={`flex gap-2 items-center`}>
                                     <img src="/images/dummyPp.jpg"
@@ -54,7 +57,7 @@ export function HomeFeatured() {
                                 </div>
 
                                 <p className="text-xs text-white">20/12/2020</p>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="bg-black p-4">

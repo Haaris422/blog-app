@@ -2,6 +2,7 @@ import { BiSearch } from "react-icons/bi";
 import { Button } from "@/components/Shared/Button";
 import { NavItems } from "../Constants/Types";
 import { NavLink } from "./NavLink";
+import { animationCalss } from "@/components/Home/Constants/Data";
 
 
 
@@ -70,7 +71,7 @@ export function TopNav() {
             <div
                 className={`flex md:hidden text-md sm:text-lg
                  text-[#2d2d2d] font-bold justify-center items-center 
-                 transition-all duration-500 ease-in-out overflow-hidden 
+                 ${animationCalss} ease-in-out overflow-hidden 
                  gap-4 xs:gap-10 sm:gap-20
                     ${
                         "max-h-screen"

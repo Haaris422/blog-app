@@ -5,6 +5,7 @@ import { blogsAndResearch, categories } from "../Constants/Data";
 import { NavLink } from "./NavLink";
 import { DropdownProps, NavContentsProps } from "../Constants/Types";
 import { MdOutlineArticle } from "react-icons/md";
+import { animationCalss } from "@/components/Home/Constants/Data";
 
 export function Dropdown({ openDropdown }: DropdownProps) {
   const [visibleContent, setVisibleContent] = useState<string | null>(null);
@@ -128,7 +129,7 @@ export function Dropdown({ openDropdown }: DropdownProps) {
     <div
       className={`
         hidden md:block backdrop-blur-2xl overflow-hidden border-t border-white/10
-        transition-all duration-500 ease-out
+        ${animationCalss}
         ${openDropdown
           ? "max-h-[600px] bg-black/90 opacity-100"
           : "max-h-0 bg-black/90 opacity-0"
@@ -136,7 +137,7 @@ export function Dropdown({ openDropdown }: DropdownProps) {
       `}
     >
       <div
-        className={`transition-all max-h-[550px] overflow-y-auto duration-200 ease-out transform ${isTransitioning
+        className={`transition-all duration-200 ease-out max-h-[550px] overflow-y-auto  transform ${isTransitioning
           ? "opacity-0 translate-y-4 scale-98"
           : "opacity-100 translate-y-0 scale-100"
           }`}

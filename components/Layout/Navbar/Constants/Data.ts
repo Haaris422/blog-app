@@ -4,8 +4,8 @@ import { NavContentsProps, NavItems } from "./Types";
         { label: 'Categories', name: 'categories' },
         { label: 'Blogs', name: 'blogs' },
         { label: 'Research', name: 'research' },
-        { label: 'Thoughts', name: 'thoughts' },
-        { label: 'Videos', name: 'videos' },
+        { label: 'Insights', name: 'insights' },
+        // { label: 'Videos', name: 'videos' },
     ]
   export const categories: NavContentsProps[] = [
   { label: 'Family Law', name: 'family-law', image: '/images/dummyImg.jpg', description: 'Deals with family-related issues like divorce, custody, and adoption.' },
