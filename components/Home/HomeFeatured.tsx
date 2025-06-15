@@ -6,24 +6,31 @@ import { AuthorInfo } from "./Shared/AuthorInfo";
 
 
 
-export function HomeFeatured() {
+export function HomeFeatured({ articles }: HomeListProps) {
+    const spotlightArticle = articles?.[0];
+    const restArticles = articles?.slice(1) ?? [];
 
     return (
         <div className="">
             <h1 className="text-black text-4xl font-bold mb-6">
                 Featured this Week
             </h1>
-            <div className="flex flex-col md:flex-row gap-6 my-4">
-                <div className={`${animationCalss} group relative w-full h-screen flex`}>
-                    <img className={`${animationCalss} block h-full max-w-full xs:max-w-[50%] group-hover:max-w-[100%]`} src="/images/dummyImg.jpg" alt="..." />
-
+            <div className="flex flex-col md:flex-row gap-6 my-4  ">
+                <div className={`${animationCalss} group relative hover:shadow-[0_0_10px_rgba(100,100,100,0.4)] w-full h-screen flex hover:scale-102`}>
+                    <div className="w-full md:w-1/2 h-64 md:h-full overflow-hidden relative">
+                        <img
+                            src={spotlightArticle?.image}
+                            alt={spotlightArticle?.title}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                    </div>
                     <div className="absolute xs:right-0 z-5 bg-black/60 xs:bg-transparent w-full xs:w-[50%] h-full flex flex-col justify-between">
                         <div className={`${animationCalss} text-white xs:text-black 
                         flex flex-col justify-between
-                        group-hover:text-white h-full text-center`}>
-                            <div className="space-y-2 pt-2">
-                                <h1 className="text-4xl">Heading</h1>
-                                <h1 className="text-md italic">Sub-Heading</h1>
+                         h-full text-center`}>
+                            <div className="space-y-2 pt-2 group-hover:underline">
+                                <h1 className="text-4xl">{spotlightArticle?.title}</h1>
+                                <h1 className="text-md italic">{spotlightArticle?.sub_title}</h1>
                             </div>
                             <div className={`${animationCalss} space-y-2`}>
                                 <p>Share</p>
@@ -31,9 +38,9 @@ export function HomeFeatured() {
                                     {shareSocials.map((social, index) => (
                                         <Link key={index} href={social.link}
                                             className={`${animationCalss} ${index < 3 ? 'border-r-0 border-2' : 'border-2'} text-md 
-                                        p-1 text-black group-hover:text-white 
-                                        bg-white  border-2
-                                        group-hover:bg-black group-hover:border-white`}>
+                                        p-1 text-black hover:text-white 
+                                        bg-white  border-2 border-black
+                                        hover:bg-black`}>
                                             {social.icon}
                                         </Link>
                                     ))}
@@ -42,29 +49,11 @@ export function HomeFeatured() {
                             <div className="p-1 text-white bg-black/70">
                                 <AuthorInfo />
                             </div>
-                            {/* <div className={`h-16 italic bg-black/70 flex p-1 items-center 
-                            justify-between group/author`}>
-                                <div className={`flex gap-2 items-center`}>
-                                    <img src="/images/dummyPp.jpg"
-                                        className={`${animationCalss} w-10 h-10 border-2 
-                                border-white 
-                                rounded-full object-cover`} alt="Author's Face" />
-                                    <div className={`${animationCalss}  text-white 
-                                    space-y-2`}>
-                                        <h2 className="text-md">Author's Name</h2>
-
-                                    </div>
-                                </div>
-
-                                <p className="text-xs text-white">20/12/2020</p>
-                            </div> */}
                         </div>
 
-                        <div className="bg-black p-4">
+                        <div className="bg-black p-4 pb-20">
                             <p className="text-justify h-[70%] pt-1.5 text-white line-clamp-9">
-                                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Fugit molestias delectus et asperiores! Velit, non adipisci vero culpa distinctio voluptatibus repellendus et fugiat aperiam quibusdam tenetur aut earum provident pariatur.
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet provident, eligendi maxime, expedita similique officia molestias delectus maiores error odio ducimus neque earum consequuntur architecto eius magni consequatur facere quasi?
-                                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Assumenda a saepe sit dolore unde repudiandae sint error eaque quia laboriosam ipsa eligendi dolorem sed, quos sapiente quidem eos rerum? Assumenda?
+                                {spotlightArticle?.content}
                             </p>
                             <Link href={`#`}>
 
@@ -84,21 +73,21 @@ export function HomeFeatured() {
 
 
                 <div className="flex text-black flex-col  gap-8">
-                    {[1, 2, 3, 4, 5].map((item) => (
+                    {restArticles.map((item) => (
                         <Link
-                            key={item}
+                            key={item.id}
                             href="#"
-                            className={`${animationCalss} transition-all duration-300 hover:scale-105 
+                            className={`${animationCalss} group transition-all min-w-[350px] duration-300 hover:scale-105 
               hover:shadow-[0_0_10px_rgba(100,100,100,0.4)]`}
                         >
                             <div className={` flex h-24 `}>
-                                <img className={` w-20 h-full`}
-                                    src='/images/dummyImg.jpg'
+                                <img className={` w-20 h-full group-hover:scale-101`}
+                                    src={item.image}
                                     alt={'top-article-this week'} />
 
-                                <div className="relative pl-2 pb-6 w-full space-y-2">
+                                <div className="relative pl-2 pb-6 w-full space-y-2 group-hover:underline underline-offset-2">
                                     <h3 className={`font-bold text-sm lg:text-md`}>
-                                        {item} Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, accusantium expedita.
+                                        {item.title}
                                     </h3>
                                     <div className="absolute pl-2 bottom-0 left-2 right-2 text-sm flex justify-between">
                                         <p>By: Author's Name</p>

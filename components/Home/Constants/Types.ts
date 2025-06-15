@@ -4,14 +4,22 @@ interface SocialsProps {
     link:string;
 }
 
-interface ArticleProps{
-    id:number;
-    link:string;
-    title:string;
-    image:string;
-    subTitle:string;
-    description:string;
-    category:string;
+interface ArticleProps {
+  id: number;
+  title: string;
+  content: string;
+  image: string;
+  type_id: number;
+  category_id: number;
+  author_id: string;
+  created_at: string;
+  sub_title: string;
+  isInsight: boolean;
+  isFeatured: boolean;
+}
+
+interface HomeListProps {
+    articles:ArticleProps[] | null;
 }
 
 interface ArticleCardProps{

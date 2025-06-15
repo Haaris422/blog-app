@@ -11,21 +11,21 @@ export function HomeInsights({ article }: ArticleCardProps) {
     const [showShare, setShowShare] = useState(false);
 
     return (
-        <div className="max-w-[300px] my-4 border border-white ">
-            {article.image && <div className="relative hidden xs:block max-w-44 md:max-w-[300px] border-b border-white">
+        <div className={`${animationCalss}  max-w-[300px] ${showFull ? '-mt-0' : '-mt-28'} border border-white `}>
+            {article.image && <div className="relative hidden xs:block max-w-[300px] border-b border-white">
                 <img
                     src={article.image}
                     alt={`Image for ${article.title}`}
-                    className="peer w-full h-full object-cover"
+                    className="peer w-full max-h-[60%] object-cover"
                 />
 
                 <div
-                    className={`absolute ${animationCalss} peer-hover:opacity-40 top-2 left-2 text-sm ${article.category === "Blogs"
-                            ? "text-black border border-black bg-white"
-                            : "text-white border border-white bg-black"
+                    className={`absolute ${animationCalss} peer-hover:opacity-40 top-2 left-2 text-sm ${article.type_id === 1
+                        ? "text-black border border-black bg-white"
+                        : "text-white border border-white bg-black"
                         } p-1.5`}
                 >
-                    {article.category === "Blogs" ? "Blog" : "Research"}
+                    {article.type_id === 1 ? "Blog" : "Research"}
                 </div>
 
                 <div className="absolute grid grid-cols-1 gap-1 bottom-2 right-2 items-end">
@@ -57,7 +57,8 @@ export function HomeInsights({ article }: ArticleCardProps) {
                 <p
                     className={`text-justify px-2 pb-2 overflow-hidden transition-all duration-500 ease-in-out
     ${showFull ? 'max-h-[12rem]' : 'max-h-[5rem]'}`}
-                >                            {article.description}
+                >                            
+                {article.content}
                 </p>
                 <Button
                     onClick={() => setShowFull(!showFull)}
