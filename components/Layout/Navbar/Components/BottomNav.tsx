@@ -1,4 +1,3 @@
-'use client';
 
 import { Button } from "@/components/Shared/Button"
 import { NavItems } from "../Constants/Types"

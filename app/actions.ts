@@ -5,7 +5,16 @@ import { PostgrestError } from "@supabase/supabase-js";
 
 export async function getArticles (){
     const supabase = await createClient();
-    let {data, error} = await supabase.from('articles').select('*') as { data: ArticleProps[] | null; error: PostgrestError | null };
+    const { data, error } = await supabase
+  .from('articles')
+  .select(`
+    *,
+    author:profiles!articles_author_id_fkey (
+      id,
+      full_name,
+      avatar_url
+    )
+  `) as { data: ArticleProps[] | null; error: PostgrestError | null };
 ;
 
     if(error){
@@ -13,5 +22,7 @@ export async function getArticles (){
         return []
     }
     console.log('homeActions: getArticles: DATA: ', data);
+
+    if(data)
     return data;
 }

@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       animation: {
         'slide-down': 'slide-down 0.5s ease-out forwards',
+              typing: "typing 2s steps(20) infinite alternate, blink .7s infinite"
       },
       keyframes: {
         'slide-down':{
@@ -18,6 +19,24 @@ module.exports = {
             transform: 'translateY(0)',
             opacity: '1',
           },
+        },
+        
+        typing: {
+          "0%": {
+            width: "0%",
+            visibility: "hidden"
+          },
+          "100%": {
+            width: "100%"
+          }
+        },
+        blink: {
+          "50%": {
+            borderColor: "transparent"
+          },
+          "100%": {
+            borderColor: "white"
+          }
         }
       },
       

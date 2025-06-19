@@ -5,14 +5,22 @@ import { ArticleCard } from "./Shared/ArticleCard";
 import { dummyArticleList } from "./Constants/Data";
 import { InsightContainer } from "./InsightContainer";
 
-export function HomeList({articles}:HomeListProps) {
+export function HomeList({articles, insights}:HomeListProps) {
     const [tab, setTab] = useState<number>(0);
     function changeTab(clickedTab: number) {
         setTab(clickedTab);
     }
 
     function currentData() {
+       
         return articles ? articles.filter((article) =>
+                        tab === 0 || article.type_id === tab
+                    ) : [];
+    }
+
+    function currentDataInsights() {
+       
+        return insights ? insights.filter((article) =>
                         tab === 0 || article.type_id === tab
                     ) : [];
     }
@@ -42,16 +50,16 @@ export function HomeList({articles}:HomeListProps) {
                 ))}
             </div>
             <div className="w-full h-[1px] bg-white" />
-            <div className="flex relative justify-between flex-col md:flex-row">
-                <div className="space-y-5 mt-6 md:mr-8">
+            <div className="flex relative gap-0 flex-col md:flex-row">
+                <div className="space-y-5 mt-6 md:mr-8 w-full">
                     {currentData()?.map((article) => (
                             <ArticleCard isFeatured={false} key={article.id} article={article} />
                         ))}
                 </div>
-                <div className={`hidden md:block  w-[2px] h-screen 
+                <div className={`hidden md:block w-[2px] h-screen 
                 bg-white sticky top-36`} />
                 
-                <InsightContainer dummyArticleList={currentData()}/>
+                <InsightContainer dummyArticleList={currentDataInsights()}/>
             </div>
         </div>
     )

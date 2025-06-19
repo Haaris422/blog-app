@@ -16,8 +16,8 @@ export function HomeFeatured({ articles }: HomeListProps) {
                 Featured this Week
             </h1>
             <div className="flex flex-col md:flex-row gap-6 my-4  ">
-                <div className={`${animationCalss} group relative hover:shadow-[0_0_10px_rgba(100,100,100,0.4)] w-full h-screen flex hover:scale-102`}>
-                    <div className="w-full md:w-1/2 h-64 md:h-full overflow-hidden relative">
+                <div className={`${animationCalss} group relative shadow-[0_0_10px_rgba(100,100,100,0.4)] w-full h-screen flex hover:scale-102`}>
+                    <div className="w-full md:w-1/2 md:h-full overflow-hidden relative">
                         <img
                             src={spotlightArticle?.image}
                             alt={spotlightArticle?.title}
@@ -47,7 +47,7 @@ export function HomeFeatured({ articles }: HomeListProps) {
                                 </div>
                             </div>
                             <div className="p-1 text-white bg-black/70">
-                                <AuthorInfo />
+                                <AuthorInfo publish_date={spotlightArticle?.created_at ?? ''} author={spotlightArticle?.author ?? {full_name:'', id:'', avatar_url:''}}/>
                             </div>
                         </div>
 
@@ -72,21 +72,21 @@ export function HomeFeatured({ articles }: HomeListProps) {
                 </div>
 
 
-                <div className="flex text-black flex-col  gap-8">
+                <div className="flex text-black flex-col gap-8">
                     {restArticles.map((item) => (
                         <Link
                             key={item.id}
                             href="#"
                             className={`${animationCalss} group transition-all min-w-[350px] duration-300 hover:scale-105 
-              hover:shadow-[0_0_10px_rgba(100,100,100,0.4)]`}
+              shadow-[0_0_10px_rgba(100,100,100,0.4)]`}
                         >
-                            <div className={` flex h-24 `}>
+                            <div className={` flex h-28 `}>
                                 <img className={` w-20 h-full group-hover:scale-101`}
                                     src={item.image}
                                     alt={'top-article-this week'} />
 
                                 <div className="relative pl-2 pb-6 w-full space-y-2 group-hover:underline underline-offset-2">
-                                    <h3 className={`font-bold text-sm lg:text-md`}>
+                                    <h3 className={`font-bold text-md`}>
                                         {item.title}
                                     </h3>
                                     <div className="absolute pl-2 bottom-0 left-2 right-2 text-sm flex justify-between">

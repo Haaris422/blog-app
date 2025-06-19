@@ -3,10 +3,11 @@ import { Button } from "@/components/Shared/Button";
 import { NavItems } from "../Constants/Types";
 import { NavLink } from "./NavLink";
 import { animationCalss } from "@/components/Home/Constants/Data";
+import { AuthArea } from "./AuthArea";
 
 
 
-export function TopNav() {
+export function TopNav({user}: ProfileProps) {
     const navLinks: NavItems[] = [
         { label: 'About', name: 'about' },
         { label: 'Contact Us', name: 'contact' },
@@ -25,63 +26,48 @@ export function TopNav() {
             </Button>
         }
     }
-    // useEffect(() => {
-    //     function handleClickOutside(event: MouseEvent) {
-    //         if (
-    //             openMenu &&
-    //             menuRef.current &&
-    //             hamburgerRef.current &&
-    //             !menuRef.current.contains(event.target as Node) &&
-    //             !hamburgerRef.current.contains(event.target as Node)
-    //         ) {
-    //             setOpenMenu(false);
-    //         }
-    //     }
 
-    //     document.addEventListener("mousedown", handleClickOutside);
-    //     return () => {
-    //         document.removeEventListener("mousedown", handleClickOutside);
-    //     };
-    // }, [openMenu]);
     return (
-        <div>
-            <div className="relative flex justify-center items-center p-2">
-
-                <h1 className=" text-black">
-                    <span className="text-6xl">Kanoon</span>
-                    <span className="text-lg">.com</span>
-                </h1>
-                <div className="absolute right-0  ">
-                    <div className="hidden md:flex 
+        <>
+            <div>
+                <div className="relative flex justify-center items-center p-2">
+                    <AuthArea user={user}/>
+                    <h1 className=" text-black">
+                        <span className="text-6xl">Kanoon</span>
+                        <span className="text-lg">.com</span>
+                    </h1>
+                    <div className="absolute right-0  ">
+                        <div className="hidden md:flex 
                     gap-5 lg:gap-8 
                     py-2 px-4 items-center">
-                        {navLinks.map((navItem) => (
-                            <NavLink navItem={navItem} key={navItem.label}>
-                                {navLinksGenerator(navItem)}
-                            </NavLink>
-                        )
+                            {navLinks.map((navItem) => (
+                                <NavLink navItem={navItem} key={navItem.label}>
+                                    {navLinksGenerator(navItem)}
+                                </NavLink>
+                            )
 
-                        )}
+                            )}
+                        </div>
+
+
                     </div>
-                    
 
                 </div>
-
-            </div>
-            <div
-                className={`flex md:hidden text-md sm:text-lg
+                <div
+                    className={`flex md:hidden text-md sm:text-lg
                  text-[#2d2d2d] font-bold justify-center items-center 
                  ${animationCalss} ease-in-out overflow-hidden 
                  gap-4 xs:gap-10 sm:gap-20
-                    ${
-                        "max-h-screen"
-                    }`}>
-                {navLinks.map((navItem) => (
-                    <NavLink className="my-2" key={navItem.label} navItem={navItem}>
-                        {navLinksGenerator(navItem)}
-                    </NavLink>
-                ))}
+                    ${"max-h-screen"
+                        }`}>
+                    {navLinks.map((navItem) => (
+                        <NavLink className="my-2" key={navItem.label} navItem={navItem}>
+                            {navLinksGenerator(navItem)}
+                        </NavLink>
+                    ))}
+                </div>
+
             </div>
-        </div>
+        </>
     )
 }

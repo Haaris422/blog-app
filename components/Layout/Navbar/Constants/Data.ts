@@ -1,4 +1,6 @@
+import { LuLogOut } from "react-icons/lu";
 import { NavContentsProps, NavItems } from "./Types";
+import { RxAvatar } from "react-icons/rx";
 
  export const bottomNavs: NavItems[] = [
         { label: 'Categories', name: 'categories' },
@@ -28,4 +30,10 @@ export const blogsAndResearch: NavContentsProps[] = [
         { label: 'Spotlight', name: 'spotlight-blogs' },
         { label: 'Latest', name: 'latest-blogs' },
         { label: 'All', name: 'all-blogs' },
+]
+
+export const profileMenu =[
+  {label:'Profile', icon:RxAvatar},
+  {label:'Sign-out', icon:LuLogOut},
+
 ]
