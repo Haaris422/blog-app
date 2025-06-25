@@ -55,7 +55,7 @@ export function HomeFeatured({ articles }: HomeListProps) {
                             <p className="text-justify h-[70%] pt-1.5 text-white line-clamp-9">
                                 {spotlightArticle?.content}
                             </p>
-                            <Link href={`#`}>
+                            <Link href={`articles/${spotlightArticle?.slug}`}>
 
                                 <Button className={`${animationCalss} border overflow-hidden group/button items-center 
         flex justify-between border-white mt-4 w-36 hover:bg-white
@@ -76,7 +76,7 @@ export function HomeFeatured({ articles }: HomeListProps) {
                     {restArticles.map((item) => (
                         <Link
                             key={item.id}
-                            href="#"
+                            href={`articles/${item.slug}`}
                             className={`${animationCalss} group transition-all min-w-[350px] duration-300 hover:scale-105 
               shadow-[0_0_10px_rgba(100,100,100,0.4)]`}
                         >

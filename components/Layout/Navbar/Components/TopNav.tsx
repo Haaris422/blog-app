@@ -4,16 +4,13 @@ import { NavItems } from "../Constants/Types";
 import { NavLink } from "./NavLink";
 import { animationCalss } from "@/components/Home/Constants/Data";
 import { AuthArea } from "./AuthArea";
+import { navLinks } from "../Constants/Data";
+import Link from "next/link";
 
 
 
-export function TopNav({user}: ProfileProps) {
-    const navLinks: NavItems[] = [
-        { label: 'About', name: 'about' },
-        { label: 'Contact Us', name: 'contact' },
-        { label: 'Newsletter', name: 'newsletter' },
-        { label: 'Search', name: 'search' },
-    ]
+export function TopNav({user}: NavbarProps) {
+   
     function navLinksGenerator(navItem: NavItems) {
         if (navItem.name !== 'search') {
             return navItem.label
@@ -32,10 +29,10 @@ export function TopNav({user}: ProfileProps) {
             <div>
                 <div className="relative flex justify-center items-center p-2">
                     <AuthArea user={user}/>
-                    <h1 className=" text-black">
+                    <Link href={'/'} className=" text-black">
                         <span className="text-6xl">Kanoon</span>
                         <span className="text-lg">.com</span>
-                    </h1>
+                    </Link>
                     <div className="absolute right-0  ">
                         <div className="hidden md:flex 
                     gap-5 lg:gap-8 

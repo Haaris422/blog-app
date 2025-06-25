@@ -2,8 +2,9 @@ import { useRef, useState, useEffect } from "react";
 import { InsightCard } from "./InsightCard";
 interface InsightContainerProps {
   dummyArticleList: ArticleProps[] | null;
+  alt?:boolean
 }
-export function InsightContainer({ dummyArticleList }: InsightContainerProps) {
+export function InsightContainer({ dummyArticleList, alt = false }: InsightContainerProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
@@ -59,17 +60,17 @@ export function InsightContainer({ dummyArticleList }: InsightContainerProps) {
     return () => window.removeEventListener('keydown', handleKeyPress);
   }, [currentIndex, isScrolling]);
 
- 
+ const insightClass = !alt ? 'border-white bg-black':'border-black bg-white text-black'
 
   return (
     <div className="mt-6 w-full md:w-[50%] h-[700px] sticky top-36 overflow-hidden">
-      <div className="border-b border-white bg-black w-full z-15 py-2">
+      <div className={`border-b ${insightClass} w-full z-15 py-2`}>
         <h1 className="text-3xl font-bold text-center">Insights</h1>
         <div className="flex justify-center mt-3 gap-1">
           {dummyArticleList?.map((_, index) => (
             <div
               key={index}
-              className={`h-0.5 bg-gray-600 rounded-full transition-all duration-300 ${index === currentIndex ? 'w-8 bg-white' : 'w-2'
+              className={`h-0.75 bg-gray-600 rounded-full border border-black transition-all duration-300 ${index === currentIndex ? 'w-8 bg-white' : 'w-2'
                 }`}
             />
           ))}

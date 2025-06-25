@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { Button } from "../Shared/Button";
 import { ArticleCard } from "./Shared/ArticleCard";
-import { dummyArticleList } from "./Constants/Data";
 import { InsightContainer } from "./InsightContainer";
 
 export function HomeList({articles, insights}:HomeListProps) {
@@ -51,7 +50,7 @@ export function HomeList({articles, insights}:HomeListProps) {
             </div>
             <div className="w-full h-[1px] bg-white" />
             <div className="flex relative gap-0 flex-col md:flex-row">
-                <div className="space-y-5 mt-6 md:mr-8 w-full">
+                <div className="space-y-5 mt-6 md:mr-8 w-full grid grid-cols-1 place-items-center sm:block">
                     {currentData()?.map((article) => (
                             <ArticleCard isFeatured={false} key={article.id} article={article} />
                         ))}

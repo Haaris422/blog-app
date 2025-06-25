@@ -35,15 +35,16 @@ export default async function RootLayout({
     let profile = null;
 
   if (user) {
-    const { data } = await supabase
+    const { data, error:profileError } = await supabase
       .from('profiles')
       .select('*')
       .eq('id', user.id)
       .single();
 
     profile = data;
-  }
+  console.log('layout: navbar: user, profile, profileError: ', user, profile, profileError)
 
+  }
   return (
     <html lang="en">
       <body

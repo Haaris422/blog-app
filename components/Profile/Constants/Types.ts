@@ -1,0 +1,3 @@
+interface ProfileCardProps{
+    profile:ProfileProps;
+}

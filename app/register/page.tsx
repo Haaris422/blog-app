@@ -4,7 +4,7 @@ import { RegisterComp } from '@/components/Auth/Register/RegisterComp';
 export default function RegisterPage() {
   return (
     <AuthWrapper>
-    <RegisterComp/>
+      <RegisterComp />
     </AuthWrapper>
   );
 }

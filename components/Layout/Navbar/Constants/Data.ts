@@ -9,6 +9,12 @@ import { RxAvatar } from "react-icons/rx";
         { label: 'Insights', name: 'insights' },
         // { label: 'Videos', name: 'videos' },
     ]
+    export  const navLinks: NavItems[] = [
+        { label: 'About', name: 'about' },
+        { label: 'Contact Us', name: 'contact' },
+        { label: 'Newsletter', name: 'newsletter' },
+        { label: 'Search', name: 'search' },
+    ]
   export const categories: NavContentsProps[] = [
   { label: 'Family Law', name: 'family-law', image: '/images/dummyImg.jpg', description: 'Deals with family-related issues like divorce, custody, and adoption.' },
   { label: 'Criminal Law', name: 'criminal-law', image: '/images/dummyImg.jpg', description: 'Focuses on crimes and legal punishment of criminal offenses.' },

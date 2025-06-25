@@ -4,24 +4,7 @@ interface SocialsProps {
     link:string;
 }
 
-interface ArticleProps {
-  id: number;
-  title: string;
-  content: string;
-  image: string;
-  type_id: number;
-  category_id: number;
-  author_id: string;
-  author:{
-    id:string;
-    full_name:string;
-    avatar_url:string;
-  };
-  created_at: string;
-  sub_title: string;
-  isInsight: boolean;
-  isFeatured: boolean;
-}
+
 
 interface HomeListProps {
     articles:ArticleProps[] | null;
@@ -33,12 +16,13 @@ interface ArticleCardProps{
     isFeatured?:boolean;
     article:ArticleProps;
 }
-
-interface AuthorInfoProps{
-   author:{
-    id:string;
+interface AuthorProps{
+    id?:string;
+    role?:string;
     full_name:string;
     avatar_url:string;
   };
+interface AuthorInfoProps{
+   author:AuthorProps;
   publish_date:string;
 }

@@ -85,9 +85,11 @@ const email = formData.get('email') as string;
   const profilesResponse = await supabase.from('profiles').insert({
     id: response.data.user?.id,
     full_name: full_name,
+    email:email
   })
   
   if(profilesResponse.error) {
+    console.log('signup: profile error: ', profilesResponse)
     return{
       data:{
         email, password, full_name
