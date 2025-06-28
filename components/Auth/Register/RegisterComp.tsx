@@ -1,6 +1,6 @@
 'use client';
 import { useActionState, useEffect, useState } from "react";
-import { login, signup } from "@/app/login/actions";
+import { signup } from "@/app/login/actions";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { animationCalss } from "@/components/Home/Constants/Data";

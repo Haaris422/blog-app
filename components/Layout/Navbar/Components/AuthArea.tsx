@@ -48,7 +48,7 @@ export function AuthArea({ user }: NavbarProps) {
                             src={avatar_url}
                             height="40" width="40"
                             className="z-10 rounded-md border border-white shadow-sm"
-                            alt="User Avatar"
+                            alt="#"
                         />
 
                         <p

@@ -27,7 +27,7 @@ export function Comment({ item, user_id, commentMap, setCommentList }: CommentPr
     function toggleReply(parent_id: string) {
         setReplying(!replying);
         setReplyingToId(parent_id);
-        setReplyComment(`@${item.user.full_name} `);
+        setReplyComment(`@${item.user?.full_name} `);
     }
     function changeReplyComm(e: React.ChangeEvent<HTMLInputElement>) {
         setReplyComment(e.target.value);
@@ -131,7 +131,7 @@ export function Comment({ item, user_id, commentMap, setCommentList }: CommentPr
 
     return (
         <div className="bg-white mb-6 w-full text-black rounded-md pt-2 pb-6 px-6" key={item.id}>
-            <AuthorInfo author={item.user} publish_date={item.created_at} />
+            <AuthorInfo author={item.user ?? null} publish_date={item.created_at} />
             {!edit ? <div className="flex gap-4">
                 <div className="border border-black w-full p-2 rounded-md">
                     {item.deleted ? <i className="text-gray-500">[Comment deleted]</i> : item.content}

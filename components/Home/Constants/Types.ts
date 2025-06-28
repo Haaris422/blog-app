@@ -23,6 +23,6 @@ interface AuthorProps{
     avatar_url:string;
   };
 interface AuthorInfoProps{
-   author:AuthorProps;
+   author:AuthorProps | null;
   publish_date:string;
 }

@@ -72,7 +72,9 @@ export function WrittenArticles({ error, insights, articles, author }: WrittenAr
 
 
                     ))}
+                    <Link href={'/createArticle'}>
                     <ActionButton className="rounded-none"><PiPlusBold className="text-xl xs:text-2xl" /></ActionButton>
+                    </Link>
 
                 </div>
             </div>

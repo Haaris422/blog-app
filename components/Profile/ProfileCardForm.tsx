@@ -41,7 +41,7 @@ export function ProfileCardForm({ profile }: ProfileCardProps) {
 console.log('ProfileCardForm: onSubmit: Updated profile:', profileResponse.data);
 
         if (profileResponse.error) {
-            console.log('ProfileCardForm: onSubmit: profile.error: ', profileResponse.error)
+            console.log('ProfileCardForm: onSubmit: profile.error: ', profileResponse)
             return alert('A Profile Error Occured, please try again.')
         }
 

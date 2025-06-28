@@ -64,7 +64,11 @@ interface UserCommentsProps{
     article_id:string;
     user_id:string;
     parent_id?:null | string;
-    user:{
+    article?:{
+        title: string;
+        slug:string;
+    };
+    user?:{
         avatar_url:string;
         full_name:string;
         id:string;
@@ -78,4 +82,20 @@ interface LikeProps{
     comment_id?:string;
     user_id:string;
     created_at:string;
+}
+
+interface AuthorApplicationForm{
+    id?:string;
+    institution?:string;
+    motivation?:string;
+    user_id?:string;
+    blog_draft?:string;
+    status?:string;
+    author?:AuthorProps | null;
+    created_at?:string;
+}
+
+interface GroupProps {
+    id?:number;
+    name?:string
 }

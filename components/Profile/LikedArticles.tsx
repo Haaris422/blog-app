@@ -18,8 +18,9 @@ interface WrittenArticlesProps {
 }
 export function LikedArticles({ error, insights, articles, author }: WrittenArticlesProps) {
 
-    if (error) {
-        <div className="text-white">
+    if (error || articles.length === 0) {
+        return(
+<div className="text-black">
             <div className="flex justify-between">
                 <h1 className="text-4xl font-bold">Liked Articles</h1>
 
@@ -27,9 +28,11 @@ export function LikedArticles({ error, insights, articles, author }: WrittenArti
 
             </div>
             <p className="">
-                No Articles written yet.
+                No Articles Liked yet.
             </p>
         </div>
+        )
+        
     }
     const categories = [
         'All', 'Blogs', 'Research'
@@ -73,26 +76,15 @@ export function LikedArticles({ error, insights, articles, author }: WrittenArti
 
 
                     ))}
-                    <Button
-                        className={`relative border text-sm xs:text-md xs:py-[10px] overflow-hidden transition-all duration-500
-                                    before:content-[''] before:absolute before:inset-0 before:bg-black 
-                                    before:scale-x-0 before:origin-left before:transition-transform before:duration-500
-                                    hover:before:scale-x-100
-                                    hover:text-white hover:border-gray-400
-                                    `}>
-                        <span className="relative z-10">
-                            <PiPlusBold className="text-lg xs:text-2xl" />
-                        </span>
-                    </Button>
 
                 </div>
             </div>
             <Divider variant="horizontal" color="black" />
-            <div className="flex flex-col md:flex-row">
-                <div className="my-8 md:max-w-[70%] gap-4 mr-6 py-4 flex h-full overflow-x-auto">
+            <div className="flex flex-col md:flex-row md:justify-between">
+                <div className="my-8 max-w-full md:w-[100%] gap-4 mr-6 py-4 flex h-full overflow-x-auto">
                     {currentData()?.map((article) => (
                         <Link href={'#'}
-                            className={`${animationCalss} ml-2 group hover:scale-105 h-[600px] min-w-[300px] border-black border`}
+                            className={`${animationCalss} ml-2 group hover:scale-105 h-[600px] w-[300px] border-black border`}
                             key={article.id}>
                             <div className="relative">
                                 <img className="peer w-[300px] h-[300px]"
